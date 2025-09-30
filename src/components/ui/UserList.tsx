@@ -16,8 +16,8 @@ interface User {
 
 interface UserListProps {
   users: User[];
-  selectedUserId?: string;
-  onUserSelect: (userId: string) => void;
+  selectedUserId: string | null;
+  onUserSelect: (userId: string | null) => void;
 }
 
 export function UserList({
