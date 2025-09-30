@@ -1,4 +1,4 @@
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -39,18 +39,12 @@ export const authOptions: NextAuthOptions = {
             return null;
           }
 
-          // Update user status to online
-          await prisma.user.update({
+          const updatedUser = await prisma.user.update({
             where: { id: user.id },
             data: { status: "online" },
           });
 
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            image: user.image,
-          };
+          return updatedUser;
         } catch (error) {
           console.error("Auth error:", error);
           return null;
