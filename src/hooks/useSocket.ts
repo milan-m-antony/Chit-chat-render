@@ -17,7 +17,7 @@ export function useSocket() {
 
     // Initialize socket connection
     socketRef.current = io({
-      path: '/api/socketio',
+      path: '/api/socket',
       addTrailingSlash: false,
     });
 

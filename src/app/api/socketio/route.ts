@@ -1,22 +1,18 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { Server as NetServer } from 'http';
-import { Server as SocketServer } from 'socket.io';
 import { SocketService } from '@/lib/socket';
+import { NextRequest } from 'next/server';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// Set runtime to edge for better performance
+export const runtime = 'edge';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (!res.socket?.server?.io) {
-    const httpServer: NetServer = res.socket.server as any;
-    await SocketService.initialize(httpServer);
-  }
+// Configure the API route
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
-  res.end();
+export async function GET(req: NextRequest) {
+  return new Response('Socket.IO endpoint ready', { status: 200 });
+}
+
+export async function POST(req: NextRequest) {
+  return new Response('Socket.IO endpoint ready', { status: 200 });
 }

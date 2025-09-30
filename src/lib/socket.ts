@@ -38,7 +38,7 @@ export class SocketService {
     }
 
     this.io = new SocketServer(server, {
-      path: '/api/socketio',
+      path: '/api/socket',
       addTrailingSlash: false,
       cors: {
         origin: process.env.NEXTAUTH_URL,
