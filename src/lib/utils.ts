@@ -38,11 +38,20 @@ export function formatRelativeTime(date: Date): string {
 export function debounce<T extends (...args: any[]) => void>(
   fn: T,
   delay: number
-): (...args: Parameters<T>) => void {
+): {
+  (...args: Parameters<T>): void;
+  cancel: () => void;
+} {
   let timeoutId: NodeJS.Timeout;
   
-  return (...args: Parameters<T>) => {
+  const debouncedFn = (...args: Parameters<T>) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => fn(...args), delay);
   };
+
+  debouncedFn.cancel = () => {
+    clearTimeout(timeoutId);
+  };
+
+  return debouncedFn;
 }
