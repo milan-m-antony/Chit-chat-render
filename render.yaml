@@ -3,9 +3,11 @@ services:
     name: chit-chat-render
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npx prisma migrate deploy && npm run build
     startCommand: npm start
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: DATABASE_URL
         fromDatabase:
           name: chitchat-db
