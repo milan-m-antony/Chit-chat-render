@@ -1,6 +1,6 @@
 # Chit-Chat
 
-A secure, real-time chat application built with Next.js 14+, TypeScript, Socket.IO, and modern web technologies.
+A secure, real-time chat application built with Next.js 14+, TypeScript, Socket.IO, and modern web technologies. Deployed on Render.com.
 
 ## Features
 
