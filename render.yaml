@@ -15,7 +15,7 @@ services:
       - key: NEXTAUTH_URL
         fromService:
           type: web
-          name: chit-chat
+          name: chit-chat-render
           envVarKey: RENDER_EXTERNAL_URL
 
 databases:
