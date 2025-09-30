@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { UserList } from '@/components/ui/UserList';
+import { UserList, type User } from '@/components/ui/UserList';
 import { MessageBubble } from '@/components/ui/MessageBubble';
 import { ChatInput } from '@/components/ui/ChatInput';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
@@ -33,20 +33,21 @@ export default function ChatPage() {
   }, [messages]);
 
   // Dummy data for demonstration
-  const users = [
+  const users: User[] = [
     {
       id: '1',
       name: 'John Doe',
-      status: 'online' as const,
-      statusMessage: 'Working on new features'
+      status: 'online',
+      statusMessage: 'Working on new features',
+      avatar: '/avatars/john.png'
     },
     {
       id: '2',
       name: 'Jane Smith',
-      status: 'away' as const,
-      statusMessage: 'In a meeting'
-    },
-    // Add more users as needed
+      status: 'away',
+      statusMessage: 'In a meeting',
+      avatar: '/avatars/jane.png'
+    }
   ];
 
   const handleSendMessage = (content: string) => {

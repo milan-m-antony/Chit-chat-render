@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 import { Avatar } from './Avatar';
 import { cn } from '@/lib/utils';
 
-interface User {
+export interface User {
   id: string;
   name: string;
   avatar?: string;
